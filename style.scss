@@ -1,0 +1,121 @@
+$font-family: Roboto, sans-serif;
+$background-color-body: #f5f6fa;
+$background-color-header: #182C61;
+$button-bg-color: #44bd32;
+$button-hover-bg-color: #4cd137;
+
+// Módulo para o reset
+@mixin reset {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: $font-family;
+}
+
+// Módulo para o container
+@mixin container {
+    max-width: 1024px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+// Módulo para o header
+@mixin header {
+    background-color: $background-color-header;
+    position: sticky;
+    top: 0;
+    left: 0;
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 0;
+    }
+}
+
+// Módulo para o botão do produto
+@mixin product-button {
+    display: block;
+    background-color: $button-bg-color;
+    color: #fff;
+    text-align: center;
+    padding: 8px 0;
+    border-radius: 8px;
+    margin-top: 8px;
+    text-decoration: none;
+
+    &:hover {
+        background-color: $button-hover-bg-color;
+    }
+}
+
+// Estilos finais
+* {
+    @include reset;
+}
+
+body {
+    background-color: $background-color-body;
+}
+
+li {
+    list-style: none;
+}
+
+.container {
+    @include container;
+}
+
+header {
+    @include header;
+}
+
+.menu {
+    display: flex;
+
+    li {
+        font-weight: bold;
+        margin-left: 24px;
+    }
+
+    li a {
+        color: #fff;
+        text-decoration: none;
+    }
+}
+
+section {
+    padding: 56px 0;
+}
+
+.products {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(3, 32.66%);
+    column-gap: 1%;
+    row-gap: 4%;
+    width: 100%;
+
+    @media screen and (max-width: 1023px) {
+        grid-template-columns: repeat(2, 48.5%);
+        column-gap: 3%;
+    }
+
+    @media screen and (max-width: 767px) {
+        display: block;
+
+        .product-item {
+            margin-bottom: 32px;
+        }
+    }
+}
+
+.product-item img {
+    width: 100%;
+    border-radius: 16px;
+}
+
+.product-button {
+    @include product-button;
+}
